@@ -1,0 +1,98 @@
+/* ==========================================================================
+   DARK MODE
+   Applied when <html data-theme="dark">. Loaded after style.css.
+   Most component colors already branch on [data-theme='dark'] inline in
+   style.css; this file carries the remaining base surface + Bootstrap
+   component overrides so third-party markup (tables, modals, alerts)
+   also reads correctly in dark mode.
+   ========================================================================== */
+
+[data-theme='dark'] body {
+  background-color: var(--ink);
+  color: var(--steel-light);
+}
+
+[data-theme='dark'] .site-header:not(.is-solid) {
+  background: linear-gradient(180deg, rgba(11, 12, 14, 0.75), transparent);
+}
+
+[data-theme='dark'] .brand-mark {
+  color: var(--ink);
+}
+
+/* Bootstrap component surfaces */
+[data-theme='dark'] .navbar,
+[data-theme='dark'] .dropdown-menu {
+  background-color: var(--ink-soft);
+  border-color: var(--line-dark);
+}
+
+[data-theme='dark'] .dropdown-item {
+  color: var(--steel-light);
+}
+
+[data-theme='dark'] .dropdown-item:hover,
+[data-theme='dark'] .dropdown-item:focus {
+  background-color: var(--ink);
+  color: var(--white);
+}
+
+[data-theme='dark'] .modal-content {
+  background-color: var(--ink-soft);
+  color: var(--steel-light);
+  border: 1px solid var(--line-dark);
+}
+
+[data-theme='dark'] .modal-header,
+[data-theme='dark'] .modal-footer {
+  border-color: var(--line-dark);
+}
+
+[data-theme='dark'] .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+[data-theme='dark'] .table {
+  color: var(--steel-light);
+  border-color: var(--line-dark);
+}
+
+[data-theme='dark'] .table > :not(caption) > * > * {
+  background-color: transparent;
+  border-bottom-color: var(--line-dark);
+  color: var(--steel-light);
+}
+
+[data-theme='dark'] .alert-success {
+  background-color: rgba(30, 142, 90, 0.12);
+  border-color: var(--success);
+  color: #5fd8a1;
+}
+
+[data-theme='dark'] .alert-danger {
+  background-color: rgba(214, 55, 59, 0.12);
+  border-color: var(--danger);
+  color: #f28a8d;
+}
+
+[data-theme='dark'] ::selection {
+  background: var(--accent);
+  color: var(--white);
+}
+
+[data-theme='dark'] .breadcrumb-trail svg,
+[data-theme='dark'] .footer-bottom {
+  color: var(--steel-light);
+}
+
+/* Smooth theme transition */
+body,
+.site-header,
+.service-card,
+.pricing-card,
+.testimonial-card,
+.review-card,
+.form-control,
+.brand-tile {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
