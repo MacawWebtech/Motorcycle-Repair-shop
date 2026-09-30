@@ -1,0 +1,33 @@
+/* ==========================================================================
+   Torque & Tread — Dark mode
+   Load after style.css. Every rule is scoped to [data-theme='dark'] on <html>,
+   which main.js sets from the theme toggle (saved in localStorage 'tt-theme').
+   ========================================================================== */
+
+/* ---------- Colour tokens ---------- */
+[data-theme='dark'] {
+  --bg: #121417;
+  --concrete: #181b1f;
+  --surface: #1e2126;
+  --text: #eceef0;
+  --muted: #a4aab2;
+  --line: #30343a;
+  --red: #ff2a3c;
+  --red-hover: #ff5260;
+}
+
+/* ---------- Buttons ---------- */
+[data-theme='dark'] .btn--primary { background: #d9041a; }
+[data-theme='dark'] .btn--primary:hover { background: #b80316; }
+
+/* ---------- Header: theme toggle icon ---------- */
+[data-theme='dark'] .theme-toggle .icon-sun { display: none; }
+[data-theme='dark'] .theme-toggle .icon-moon { display: block; }
+
+/* ---------- Brands filter ---------- */
+[data-theme='dark'] .filter-bar button[aria-pressed='true'] { background: var(--red); border-color: var(--red); }
+
+/* ---------- Forms ---------- */
+[data-theme='dark'] .field input,
+[data-theme='dark'] .field select,
+[data-theme='dark'] .field textarea { border-color: var(--line); }

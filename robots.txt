@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /documentation/
+
+Sitemap: https://www.torqueandtread.example/sitemap.xml
