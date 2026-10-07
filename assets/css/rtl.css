@@ -1,0 +1,48 @@
+/* ==========================================================================
+   Torque & Tread — Right-to-left (RTL)
+   Load after style.css. Every rule is scoped to [dir='rtl'] on <html>, which
+   main.js sets from the RTL toggle (saved in localStorage 'tt-dir').
+   Most layout already flips on its own through logical properties
+   (inset-inline, margin-inline, border-inline-start…); this file only holds
+   the direction-specific visuals: gradients, skews, transforms and shadows.
+   ========================================================================== */
+
+/* ---------- Hero ---------- */
+[dir='rtl'] .hero::before { transform: scaleX(-1); }
+
+/* ---------- Service picker ---------- */
+[dir='rtl'] .picker__tab[aria-selected='true'] { box-shadow: inset -4px 0 0 var(--red-bright); }
+
+/* ---------- Creative header ---------- */
+[dir='rtl'] .site-header {
+  background:
+    linear-gradient(248deg, rgba(251,2,22,.20) 0, rgba(251,2,22,.20) clamp(150px, 20vw, 290px), transparent clamp(150px, 20vw, 290px)),
+    linear-gradient(260deg, #0f1113 0%, var(--graphite) 45%, #1f2226 100%);
+}
+[dir='rtl'] .site-header::after {
+  background: linear-gradient(270deg, var(--red-bright) var(--ride, 0%), rgba(255,255,255,.14) var(--ride, 0%));
+}
+
+/* Nav links: slanted pill mirrored */
+[dir='rtl'] .nav__list > li > .nav__link::before { transform-origin: right center; transform: skewX(16deg) scaleX(0); }
+[dir='rtl'] .nav__list > li > .nav__link:hover::before,
+[dir='rtl'] .nav__list > li > .nav__link:focus-visible::before,
+[dir='rtl'] .has-sub.is-open > .nav__link::before { transform: skewX(16deg) scaleX(1); }
+[dir='rtl'] .nav__list > li > .nav__link[aria-current='page']::before { transform: skewX(16deg) scaleX(1); }
+
+/* ---------- Mobile / tablet menu (≤1080px) ---------- */
+@media (max-width: 1080px) {
+  /* Off-canvas menu slides in from the left */
+  [dir='rtl'] .nav { transform: translateX(-100%); }
+  [dir='rtl'] .nav.is-open { transform: none; }
+
+  /* Numbered links: undo the desktop RTL pill above */
+  [dir='rtl'] .nav__list > li > .nav__link::before,
+  [dir='rtl'] .nav__list > li > .nav__link:hover::before,
+  [dir='rtl'] .nav__list > li > .nav__link[aria-current='page']::before,
+  [dir='rtl'] .has-sub.is-open > .nav__link::before {
+    content: counter(nv, decimal-leading-zero); position: static; inset: auto; z-index: auto;
+    background: none; box-shadow: none; border-radius: 0; transform: none;
+    color: var(--red-bright); font-size: .95rem; letter-spacing: .1em; min-width: 38px; display: inline-block; text-align: start;
+  }
+}
